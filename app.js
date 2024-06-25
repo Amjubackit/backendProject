@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
@@ -7,8 +6,8 @@ const logger = require('morgan');
 const app = express();
 
 // connect to Database
-const connectDB = require('./db');
-connectDB();
+const initDatabase = require('./db');
+initDatabase();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,7 +25,7 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/about', require('./routes/about'));
 app.use('/report', require('./routes/report'));
-app.use('/addcalories', require('./routes/addCalories'));
+app.use('/addcalories', require('./routes/calories'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

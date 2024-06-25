@@ -2,37 +2,51 @@ const mongoose = require('mongoose');
 const Users = require('./models/users.js');
 const path = require('path');
 const fs = require('fs');
+const myDatabase = 'db-name';
 
 // Load default user from json file
 const loadDefaultUser = () => {
+    console.log('Loading default user from json file...');
     const filePath = path.join(__dirname, 'defaultUser.json');
     const data = fs.readFileSync(filePath, 'utf8');
     return JSON.parse(data);
 };
 
-// Loads default user from file and add it to users collection
+// Add default user to users collection
 const addDefaultUser = async () => {
-    // Delete default user on restart
-    console.log('Deleting default user');
-    await Users.deleteOne({ id: 123123 });
+    console.log('Pushing default user to database...');
     const defaultUser = loadDefaultUser();
     // Add the default user to the database and save
     const user = new Users(defaultUser);
     await user.save();
-    console.log('Default user added.');
 };
 
+// Drop existing collections
+const cleanDatabase = async () => {
+    console.log('Dropping collections...');
+    const collections = await mongoose.connection.db.collections();
+    for (let collection of collections) {
+        await collection.drop();
+    }
+};
+
+// Connect to mongodb server
 const connectDB = async () => {
     try {
-        // Connect to mongodb server
         console.log('Connecting mongodb...');
-        await mongoose.connect('mongodb://localhost:27017/be-db');
-        console.log('MongoDB connected...');
-        await addDefaultUser();
+        await mongoose.connect(`mongodb://localhost:27017/${myDatabase}`);
     } catch (err) {
         console.error(err.message);
         process.exit(1);
     }
 };
 
-module.exports = connectDB;
+// Init database, connect -> clean -> add default data
+const initDatabase = async () => {
+    await connectDB();
+    await cleanDatabase();
+    await addDefaultUser();
+    console.log('Init DB completed, Server is ready to use.');
+};
+
+module.exports = initDatabase;
