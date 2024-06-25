@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const caloriesSchema = new mongoose.Schema(
     {
         user_id: {
-            type: Number,
+            type: String,
             required: true,
         },
         year: {
@@ -19,7 +19,7 @@ const caloriesSchema = new mongoose.Schema(
             required: true,
         },
         id: {
-            type: Number,
+            type: String,
             required: true,
             unique: true,
         },
