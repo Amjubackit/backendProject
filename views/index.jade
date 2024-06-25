@@ -1,6 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  p #{testing}
+  h1 Home Page
+  ul
+    li
+      a(href="/users") Users
+    li
+      a(href="/about") About
+    li
+      a(href="/report") Report
+    li
+      a(href="/addcalories") Add Calories
