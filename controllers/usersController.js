@@ -1,16 +1,13 @@
-const Users = require('../models/users');
+const userService = require('../services/userService');
 
-// Get user by ID
 const getUser = async (req, res) => {
     try {
-        // Try to find the user in the DB by ID
-        const user = await Users.findOne({ id: req.params.id });
-        if (!user) {
-            // User not found, return 404
-            return res.status(404).json({ message: 'User not found' });
-        }
-        res.json(user);
+        const user = await userService.getUserById(req.params.id);
+        res.status(200).json(user);
     } catch (err) {
+        if (err.message === 'User not found') {
+            return res.status(404).json({ message: err.message });
+        }
         res.status(500).json({ message: err.message });
     }
 };

@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
-const Users = require('./models/users.js');
-const path = require('path');
-const fs = require('fs');
+const Users = require('../models/users.js');
 const myDatabase = 'db-name';
+const path = require('path');
+const { loadJson } = require('../utils/helperFunctions');
 
 // Load default user from json file
 const loadDefaultUser = () => {
     console.log('Loading default user from json file...');
     const filePath = path.join(__dirname, 'defaultUser.json');
-    const data = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(data);
+    return loadJson(filePath);
 };
 
 // Add default user to users collection

@@ -6,7 +6,7 @@ const logger = require('morgan');
 const app = express();
 
 // connect to Database
-const initDatabase = require('./db');
+const initDatabase = require('./config/db');
 initDatabase();
 
 // view engine setup
