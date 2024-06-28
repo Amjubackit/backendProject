@@ -1,6 +1,6 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const User = require('../models/user.js');
-const myDatabase = 'db-name';
 const path = require('path');
 const { loadJson } = require('../utils/helperFunctions');
 
@@ -33,7 +33,9 @@ const cleanDatabase = async () => {
 const connectDB = async () => {
     try {
         console.log('Connecting mongodb...');
-        await mongoose.connect(`mongodb://localhost:27017/${myDatabase}`);
+        await mongoose.connect(
+            process.env.MONGODB_SERVER || `mongodb://localhost:27017/local-db`
+        );
     } catch (err) {
         console.error(err.message);
         process.exit(1);
