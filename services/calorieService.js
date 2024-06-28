@@ -1,9 +1,14 @@
 const Calories = require('../models/calorie');
+const { getUserById } = require('./userService');
 const { v4: uuidv4 } = require('uuid');
 
 // Add calorie item to database - service layer
 const addCalorieItem = async (calorieData) => {
     try {
+        // Make sure such user exists first.
+        // Prevents adding calorie item to a non-existing user.
+        const { user_id } = calorieData;
+        await getUserById(user_id);
         // Create new calorie item based on data & generated ID
         const newCalorieItem = new Calories({
             // Unique id for calorie item
