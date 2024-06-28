@@ -1,8 +1,9 @@
 const calorieService = require('./calorieService');
 
+// Generate report - service layer
 const generateReport = async (user_id, year, month) => {
     try {
-        // Get matched calories via calorieService
+        // Utilize calories service to get the relevant calorie items.
         const calories = await calorieService.getCaloriesByUserAndDate(
             user_id,
             year,

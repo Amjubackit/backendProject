@@ -1,8 +1,10 @@
-const Users = require('../models/users');
+const User = require('../models/user');
 
+// Get user by ID - service layer
 const getUserById = async (id) => {
     try {
-        const user = await Users.findOne({ id });
+        // Find user that matches given ID in database
+        const user = await User.findOne({ id });
         if (!user) {
             throw new Error('User not found');
         }

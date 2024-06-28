@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Users = require('../models/users.js');
+const User = require('../models/user.js');
 const myDatabase = 'db-name';
 const path = require('path');
 const { loadJson } = require('../utils/helperFunctions');
@@ -16,7 +16,7 @@ const addDefaultUser = async () => {
     console.log('Pushing default user to database...');
     const defaultUser = loadDefaultUser();
     // Add the default user to the database and save
-    const user = new Users(defaultUser);
+    const user = new User(defaultUser);
     await user.save();
 };
 

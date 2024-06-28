@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const caloriesSchema = new mongoose.Schema(
+// Define calorie schema for DB
+const calorieSchema = new mongoose.Schema(
     {
         user_id: {
             type: String,
@@ -30,6 +31,7 @@ const caloriesSchema = new mongoose.Schema(
         category: {
             type: String,
             required: true,
+            // Ensure providing valid categories only
             enum: ['breakfast', 'lunch', 'dinner', 'other'],
         },
         amount: {
@@ -37,7 +39,9 @@ const caloriesSchema = new mongoose.Schema(
             required: true,
         },
     },
+    // Removing the __v property
     { versionKey: false }
 );
 
-module.exports = mongoose.model('calories', caloriesSchema);
+// Create calories collection
+module.exports = mongoose.model('calories', calorieSchema);

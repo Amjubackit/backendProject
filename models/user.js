@@ -16,11 +16,13 @@ const userSchema = new mongoose.Schema(
             required: true,
         },
         birthday: {
-            type: String,
+            type: Date,
             required: true,
         },
     },
-    { versionKey: false } // Removing the __v property
+    // Removing the __v property
+    { versionKey: false }
 );
 
+// Create users collection
 module.exports = mongoose.model('users', userSchema);
