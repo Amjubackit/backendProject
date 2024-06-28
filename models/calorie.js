@@ -9,15 +9,15 @@ const calorieSchema = new mongoose.Schema(
         },
         year: {
             type: Number,
-            required: true,
+            required: false,
         },
         month: {
             type: Number,
-            required: true,
+            required: false,
         },
         day: {
             type: Number,
-            required: true,
+            required: false,
         },
         id: {
             type: String,
