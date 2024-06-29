@@ -4,7 +4,7 @@ const User = require('../models/user.js');
 const path = require('path');
 const { loadJson } = require('../utils/helperFunctions');
 const MONGODB_URI =
-    process.env.MONGODB_SERVER || `mongodb://localhost:27017/local-db`;
+    'mongodb+srv://elimelechmail:3FRfAeyRzgyDo7ib@mycluster.o0gfu3x.mongodb.net/';
 
 // Load default user from json file
 const loadDefaultUser = () => {
