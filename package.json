@@ -17,12 +17,12 @@
         "mongoose": "^8.4.3",
         "morgan": "~1.9.1",
         "uuid": "^10.0.0",
-        "uuidv4": "^6.2.13"
+        "uuidv4": "^6.2.13",
+        "dotenv": "^16.4.5"
     },
     "devDependencies": {
         "axios": "^1.7.2",
         "@eslint/js": "^9.5.0",
-        "dotenv": "^16.4.5",
         "eslint": "^9.5.0",
         "globals": "^15.6.0",
         "prettier": "^3.3.2"
