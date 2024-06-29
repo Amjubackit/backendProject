@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const User = require('../models/user.js');
 const path = require('path');
 const { loadJson } = require('../utils/helperFunctions');
+const MONGODB_URI =
+    process.env.MONGODB_SERVER || `mongodb://localhost:27017/local-db`;
 
 // Load default user from json file
 const loadDefaultUser = () => {
@@ -33,9 +35,8 @@ const cleanDatabase = async () => {
 const connectDB = async () => {
     try {
         console.log('Connecting mongodb...');
-        await mongoose.connect(
-            process.env.MONGODB_SERVER || `mongodb://localhost:27017/local-db`
-        );
+        console.log(`MONGODB_URI: ${MONGODB_URI}`);
+        await mongoose.connect(MONGODB_URI);
     } catch (err) {
         console.error(err.message);
         process.exit(1);
