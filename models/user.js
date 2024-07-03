@@ -1,3 +1,16 @@
+/***----------------------
+ * Developers:
+ *------------------------
+ * First name: Bar
+ * Last name: Elimelech
+ * ID: 313586869
+ *------------------------
+ * First name: George
+ * Last name: Zedgenidze
+ * ID: 316048073
+ *------------------------
+ */
+
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema(
