@@ -33,8 +33,9 @@ const userSchema = new mongoose.Schema(
             required: true,
         },
     },
-    // Removing the __v property
-    { versionKey: false }
+    // versionKey - Removing the __v property
+    // strict - Allowing additional properties to be saved (Due to the requirement "at the minimum")
+    { versionKey: false, strict: false }
 );
 
 // Create users collection

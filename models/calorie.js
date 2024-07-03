@@ -22,15 +22,15 @@ const calorieSchema = new mongoose.Schema(
         },
         year: {
             type: Number,
-            required: false,
+            required: true,
         },
         month: {
             type: Number,
-            required: false,
+            required: true,
         },
         day: {
             type: Number,
-            required: false,
+            required: true,
         },
         id: {
             type: String,
@@ -52,8 +52,9 @@ const calorieSchema = new mongoose.Schema(
             required: true,
         },
     },
-    // Removing the __v property
-    { versionKey: false }
+    // versionKey - Removing the __v property
+    // strict - Allowing additional properties to be saved (Due to the requirement "at the minimum")
+    { versionKey: false, strict: false }
 );
 
 // Create calories collection

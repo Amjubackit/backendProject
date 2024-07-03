@@ -13,8 +13,8 @@
 
 const User = require('../models/user');
 
-// Get user by ID - service layer
-const getUserById = async (id) => {
+// Find user by ID - service layer
+const findUserById = async (id) => {
     try {
         // Find user that matches given ID in database
         const user = await User.findOne({ id });
@@ -28,5 +28,5 @@ const getUserById = async (id) => {
 };
 
 module.exports = {
-    getUserById,
+    findUserById,
 };

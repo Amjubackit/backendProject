@@ -14,7 +14,10 @@
 const express = require('express');
 const router = express.Router();
 const { getReport } = require('../controllers/reportController');
+const {
+    validateGetReportParams,
+} = require('../middlewares/validateReportParams');
 
-router.get('/', getReport);
+router.get('/', validateGetReportParams, getReport);
 
 module.exports = router;

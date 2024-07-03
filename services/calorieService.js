@@ -12,16 +12,16 @@
  */
 
 const Calories = require('../models/calorie');
-const { getUserById } = require('./userService');
+const { findUserById } = require('./userService');
 const { v4: uuidv4 } = require('uuid');
 
-// Add calorie item to database - service layer
-const addCalorieItem = async (calorieData) => {
+// Save calorie item in database - service layer
+const saveCalorieItem = async (calorieData) => {
     try {
         // Make sure such user exists first.
         // Prevents adding calorie item to a non-existing user.
         const { user_id } = calorieData;
-        await getUserById(user_id);
+        await findUserById(user_id);
         // Create new calorie item based on data & generated ID
         const newCalorieItem = new Calories({
             // Unique id for calorie item
@@ -38,7 +38,7 @@ const addCalorieItem = async (calorieData) => {
 };
 
 // Get calories data by user and date (year & month) - service layer
-const getCaloriesByUserAndDate = async (user_id, year, month) => {
+const findCaloriesByUserAndDate = async (user_id, year, month) => {
     try {
         // Utilize calorie model to find relevant calorie items
         const calories = await Calories.find({ user_id, year, month });
@@ -49,6 +49,6 @@ const getCaloriesByUserAndDate = async (user_id, year, month) => {
 };
 
 module.exports = {
-    addCalorieItem,
-    getCaloriesByUserAndDate,
+    saveCalorieItem,
+    findCaloriesByUserAndDate,
 };

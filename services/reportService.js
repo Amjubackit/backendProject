@@ -12,15 +12,15 @@
  */
 
 const calorieService = require('./calorieService');
-const { getUserById } = require('./userService');
+const { findUserById } = require('./userService');
 
 // Generate report - service layer
 const generateReport = async (user_id, year, month) => {
     try {
         // Make sure such user exists first.
-        await getUserById(user_id);
+        await findUserById(user_id);
         // Utilize calories service to get the relevant calorie items.
-        const calories = await calorieService.getCaloriesByUserAndDate(
+        const calories = await calorieService.findCaloriesByUserAndDate(
             user_id,
             year,
             month

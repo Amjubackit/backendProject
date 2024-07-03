@@ -17,7 +17,7 @@ const userService = require('../services/userService');
 const getUser = async (req, res) => {
     try {
         // Call service function to get the user data by ID
-        const user = await userService.getUserById(req.params.id);
+        const user = await userService.findUserById(req.params.id);
         res.status(200).json(user);
     } catch (err) {
         // Return 404 if user not found.
