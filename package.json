@@ -10,7 +10,6 @@
         "test": "mocha tests/mocha/*.mjs",
         "test:report": "mocha tests/mocha/report.test.mjs",
         "test:calories": "mocha tests/mocha/calories.test.mjs"
-
     },
     "dependencies": {
         "cookie-parser": "~1.4.4",

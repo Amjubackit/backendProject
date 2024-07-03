@@ -6,14 +6,14 @@ Backend Project is a RESTful web service built using Node.js and Express.
 
 ## Features
 
-- **CRUD Operations:** Create, read, update, and delete resources.
-- **Database Integration:** Connected to a MongoDB database.
-- **Configuration Management:** Environment-specific configuration settings.
+-   **CRUD Operations:** Create, read, update, and delete resources.
+-   **Database Integration:** Connected to a MongoDB database.
+-   **Configuration Management:** Environment-specific configuration settings.
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) (version 20.x or higher)
-- [MongoDB](https://www.mongodb.com/) (for database)
+-   [Node.js](https://nodejs.org/) (version 20.x or higher)
+-   [MongoDB](https://www.mongodb.com/) (for database)
 
 ## Installation
 
@@ -46,6 +46,7 @@ Backend Project is a RESTful web service built using Node.js and Express.
     ```sh
     npm start
     ```
+
     The application will be available at `http://localhost:3000`.
 
 ## Project Structure
@@ -71,8 +72,6 @@ my-express-app/
 └── README.md # Project documentation
 ```
 
-
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
